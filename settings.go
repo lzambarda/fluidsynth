@@ -58,7 +58,7 @@ func (s *Settings) SetString(name, val string) bool {
 	cval := C.CString(val)
 	defer C.free(unsafe.Pointer(cval))
 	return C.fluid_settings_setstr(s.ptr, cname(name), cval) == 1
-	
+
 }
 
 func (s *Settings) GetInt(name string, val *int) bool {
@@ -67,13 +67,4 @@ func (s *Settings) GetInt(name string, val *int) bool {
 
 func (s *Settings) GetNum(name string, val *float64) bool {
 	return C.fluid_settings_getnum(s.ptr, cname(name), (*C.double)(unsafe.Pointer(val))) == 1
-}
-
-func (s *Settings) GetString(name string, val *string) bool {
-	var cstr *C.char
-	ok := (C.fluid_settings_getstr(s.ptr, cname(name), &cstr) == 1)
-	if ok {
-		*val = C.GoString(cstr)
-	}
-	return ok
 }
