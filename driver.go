@@ -17,7 +17,6 @@ func (d *AudioDriver) Delete() {
 	C.delete_fluid_audio_driver(d.ptr)
 }
 
-
 type FileRenderer struct {
 	ptr *C.fluid_file_renderer_t
 }
