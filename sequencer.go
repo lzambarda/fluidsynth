@@ -36,7 +36,7 @@ func (s *Sequencer) SendNoteNow(ch, note, velocity uint) {
 	C.delete_fluid_event(evt)
 }
 
-func (s *Sequencer) ScheduleSendNote(ch, note, velocity uint, t time.Duration) error {
+func (s *Sequencer) ScheduleSendNote(ch, note, velocity uint8, t time.Duration) error {
 	evt := C.new_fluid_event()
 	C.fluid_event_set_source(evt, -1)
 	C.fluid_event_set_dest(evt, s.synthPtr)
