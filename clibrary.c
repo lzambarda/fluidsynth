@@ -1,6 +1,6 @@
 #include <fluidsynth.h>
-
+#include "clibrary.h"
 
 void CallMyFunction(unsigned int time, fluid_event_t *event, fluid_sequencer_t *seq, void *data) {
-  printf("call my function");
+  go_sequencer_callback(time, event, seq, data);
 }
