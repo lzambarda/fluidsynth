@@ -26,7 +26,7 @@ func (s *Sequencer) RegisterSynth(synth Synth) {
 	s.synthPtr = C.fluid_sequencer_register_fluidsynth(s.ptr, synth.ptr)
 }
 
-func (s *Sequencer) SendNoteNow(ch, note, velocity uint) {
+func (s *Sequencer) SendNoteNow(ch, note, velocity uint8) {
 	evt := C.new_fluid_event()
 	C.fluid_event_set_source(evt, -1)
 	C.fluid_event_set_dest(evt, s.synthPtr)
