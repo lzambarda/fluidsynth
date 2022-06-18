@@ -1,8 +1,12 @@
 package fluidsynth
 
-// #cgo pkg-config: fluidsynth
-// #include <fluidsynth.h>
-// #include <stdlib.h>
+/*
+#cgo pkg-config: fluidsynth
+#include <fluidsynth.h>
+#include <stdlib.h>
+
+typedef void (*closure)();
+*/
 import "C"
 
 type AudioDriver struct {

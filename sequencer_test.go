@@ -13,7 +13,7 @@ func TestSequencerSendNow(t *testing.T) {
 	driver := NewAudioDriver(settings, synth)
 	defer driver.Delete()
 
-	hasWorked := synth.SFLoad("/Users/iyadassaf/Desktop/808.sf2", true)
+	hasWorked := synth.SFLoad("testdata/Piano.sf2", true)
 	fmt.Println("has worked", hasWorked)
 
 	seq := NewSequencer()
@@ -38,7 +38,7 @@ func TestSequencerSchedule(t *testing.T) {
 	driver := NewAudioDriver(settings, synth)
 	defer driver.Delete()
 
-	hasWorked := synth.SFLoad("/Users/iyadassaf/Desktop/808.sf2", true)
+	hasWorked := synth.SFLoad("testdata/Piano.sf2", true)
 	fmt.Println("has worked", hasWorked)
 
 	seq := NewSequencer()
@@ -46,7 +46,7 @@ func TestSequencerSchedule(t *testing.T) {
 	seq.RegisterSynth(synth)
 
 	var tm time.Duration
-	for i := 0; i<10; i++ {
+	for i := 0; i < 10; i++ {
 		tm += time.Second
 		fmt.Println("Sending note at", tm)
 		if err := seq.ScheduleSendNote(1, 36, 127, tm); err != nil {
@@ -55,4 +55,3 @@ func TestSequencerSchedule(t *testing.T) {
 	}
 	time.Sleep(time.Second * 10)
 }
-
